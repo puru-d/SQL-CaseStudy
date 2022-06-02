@@ -89,7 +89,7 @@ from business
 group by city
 order by review_cnt desc
 	
-	
+
 Copy and Paste the Result Below:
 
 +-----------------+------------+
