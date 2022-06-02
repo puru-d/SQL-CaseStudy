@@ -1,5 +1,5 @@
 # SQL-CaseStudy
-
+<pre>
 **Introduction**:
 We will be using a dataset from a US-based organization called Yelp, which provides a platform for users to provide reviews and rate their interactions with a variety of organizations – businesses, restaurants, health clubs, hospitals, local governmental offices, charitable organizations, etc. Yelp has made a portion of this data available for personal, educational, and academic purposes.
 
@@ -455,3 +455,4 @@ from business as biz
     inner join category as cat on cat.business_id = biz.id
 group by cat.category
 order by avg_stars desc, avg_review_count desc
+</pre>
