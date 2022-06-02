@@ -83,14 +83,14 @@ _4. For each table and column listed below, display the smallest (minimum), larg
 _5. List the cities with the most reviews in descending order:_
 
 SQL code used to arrive at answer:
-	
+<pre>
 select city, count(review_count) as review_cnt 
 from business
 group by city
 order by review_cnt desc
-	
+</pre>	
 
-Copy and Paste the Result Below:
+Table:
 <pre>
 +-----------------+------------+
 | city            | review_cnt |
@@ -130,47 +130,47 @@ _6. Find the distribution of star ratings to the business in the following citie
 i. Avon
 
 SQL code used to arrive at answer:
-
+<pre>
 select city, min(stars) as min_star, max(stars) as max_star, avg(stars) as avg_star
 from business
 where city = 'Avon'
-
-Copy and Paste the Resulting Table Below (2 columns Ã¢â‚¬â€œ star rating and count):
-
+</pre>
+Table:
+<pre>
 +------+----------+----------+----------+
 | city | min_star | max_star | avg_star |
 +------+----------+----------+----------+
 | Avon |      1.5 |      5.0 |     3.45 |
 +------+----------+----------+----------+
-
+</pre>
 ii. Beachwood
 
 SQL code used to arrive at answer:
-
+<pre>
 select city, min(stars) as min_star, max(stars) as max_star, avg(stars) as avg_star
 from business
 where city = 'Beachwood'
-
-Copy and Paste the Resulting Table Below (2 columns Ã¢â‚¬â€œ star rating and count):
-		
+</pre>
+Table:
+<pre>	
 +-----------+----------+----------+---------------+
 | city      | min_star | max_star |      avg_star |
 +-----------+----------+----------+---------------+
 | Beachwood |      2.0 |      5.0 | 3.96428571429 |
 +-----------+----------+----------+---------------+
-
+</pre>
 
 _7. Find the top 3 users based on their total number of reviews:_
 		
 SQL code used to arrive at answer:
-	
+<pre>
 select name, review_count
 from user
 order by review_count desc
 limit 3
-		
-	Copy and Paste the Result Below:
-	
+</pre>	
+Table:
+<pre>
 +--------+--------------+
 | name   | review_count |
 +--------+--------------+
@@ -178,14 +178,14 @@ limit 3
 | Sara   |         1629 |
 | Yuri   |         1339 |
 +--------+--------------+
-		
+</pre>	
 
 _8. Does posing more reviews correlate with more fans?_
 
 Please explain your findings and interpretation of the results:
 	
 No. As we can see in table below, sara review count are more than yuri but yuri has more fans.
-
+<pre>
 select name, fans, review_count
 from user
 order by review_count desc
@@ -215,13 +215,13 @@ limit 20
 | Alison    |   61 |          775 |
 | Sui       |   78 |          754 |
 +-----------+------+--------------+
-	
+</pre>
 _9. Are there more reviews with the word "love" or with the word "hate" in them?_
 
 Answer: love(454)
 
 SQL code used to arrive at answer:
-
+<pre>
 select count(text) as count
 from tip
 where text like "%love%"
@@ -229,20 +229,20 @@ union all
 select count(text) as count
 from tip
 where text like "%hate%"
-	
+</pre>
 	
 _10. Find the top 10 users with the most fans:_
 
 SQL code used to arrive at answer:
-	
+<pre>
 select name, count(fans) as fan_count
 from user
 group by name
 order by fan_count desc
 limit 10
-	
-Copy and Paste the Result Below:
-
+</pre>
+Table:
+<pre>
 +----------+-----------+
 | name     | fan_count |
 +----------+-----------+
@@ -257,7 +257,7 @@ Copy and Paste the Result Below:
 | Melissa  |        58 |
 | Sarah    |        55 |
 +----------+-----------+
-		
+</pre>	
 
 **Part 2: Inferences and Analysis**
 
@@ -274,16 +274,16 @@ Food lovers are more active in "Phoenix", but food socialist are more active in 
 
 
 SQL code used for analysis:
-
+<pre>
 select biz.city, cat.category, rev.stars, hr.hours, biz.review_count
 from business as biz
     inner join category as cat on cat.business_id = biz.id
     inner join review as rev on rev.business_id = biz.id
     inner join hours as hr on hr.business_id = biz.id
 where cat.category = 'Food'
-
+</pre>
 Table:
-
+<pre>
 +-----------+----------+-------+----------------------+--------------+
 | city      | category | stars | hours                | review_count |
 +-----------+----------+-------+----------------------+--------------+
@@ -324,7 +324,7 @@ Table:
 | Phoenix | Food     |     5 | Sunday|11:00-22:00    |          431 |
 | Phoenix | Food     |     5 | Saturday|11:00-22:00  |          431 |
 +---------+----------+-------+-----------------------+--------------+
-
+</pre>
 		
 _2. Group business based on the ones that are open and the ones that are closed. What differences can you find between the ones that are still open and the ones that are closed? List at least two differences and the SQL code you used to arrive at your answer._
 		
@@ -336,14 +336,15 @@ _ii. Difference 2:_
          
          
 SQL code used for analysis:
-
+<pre>
 select distinct cat.category, count(biz.is_open) as City_Count
 from category as cat
     inner join business as biz on cat.business_id = biz.id
 group by cat.category
 order by City_Count desc
-
+</pre>
 Table:
+<pre>
 +---------------------------+------------+
 | category                  | City_Count |
 +---------------------------+------------+
@@ -403,7 +404,7 @@ Table:
 | Check Cashing/Pay-day Loans |          1 |
 | Chicken Shop                |          1 |
 +-----------------------------+------------+
-	
+</pre>
 	
 _3. For this last part of your analysis, you are going to choose the type of analysis you want to conduct on the Yelp dataset and are going to prepare the data for analysis._
 
@@ -416,6 +417,7 @@ _ii. Write 1-2 brief paragraphs on the type of data you will need for your analy
 Data required for this will be business category, city, stars, review count, useful, cool, funny.                            
                   
 _iii. Output of your finished dataset:_
+<pre>
 +------------+------------------------+-----------+------------------+----------------+----------------+----------------+
 | city       | category               | avg_stars | avg_review_count |     avg_useful |      avg_funny |       avg_cool |
 +------------+------------------------+-----------+------------------+----------------+----------------+----------------+
@@ -445,9 +447,9 @@ _iii. Output of your finished dataset:_
 | Phoenix    | Breakfast & Brunch     |       4.0 |            188.0 |            0.5 |            0.0 |            0.0 |
 | Phoenix    | Nightlife              |     3.875 |            325.0 |           0.25 |            0.0 |            0.0 |
 +------------+------------------------+-----------+------------------+----------------+----------------+----------------+
-         
+</pre>
 _iv. Provide the SQL code you used to create your final dataset:_
-
+<pre>
 select biz.city, cat.category, avg(biz.stars) as avg_stars,
     avg(biz.review_count) as avg_review_count, avg(rev.useful) as avg_useful, avg(rev.funny) as avg_funny, avg(rev.cool) as avg_cool
 from business as biz
