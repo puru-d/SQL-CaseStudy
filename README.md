@@ -91,7 +91,7 @@ order by review_cnt desc
 	
 
 Copy and Paste the Result Below:
-
+<pre>
 +-----------------+------------+
 | city            | review_cnt |
 +-----------------+------------+
@@ -121,6 +121,7 @@ Copy and Paste the Result Below:
 | Surprise        |         60 |
 | Richmond Hill   |         54 |
 +-----------------+------------+
+</pre>
 (Output limit exceeded, 25 of 362 total rows shown)
 
 	
