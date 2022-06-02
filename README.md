@@ -1,6 +1,5 @@
 # SQL-CaseStudy
 
-<pre>
 **Introduction**:
 We will be using a dataset from a US-based organization called Yelp, which provides a platform for users to provide reviews and rate their interactions with a variety of organizations – businesses, restaurants, health clubs, hospitals, local governmental offices, charitable organizations, etc. Yelp has made a portion of this data available for personal, educational, and academic purposes.
 
@@ -14,7 +13,7 @@ In the second part of the assignment, you are asked to come up with your own inf
 **Part 1: Yelp Dataset Profiling and Understanding**
 
 _1. Profile the data by finding the total number of records for each of the tables below:_
-	
+<pre>
 i. Attribute table = 10000
 ii. Business table = 10000
 iii. Category table = 10000
@@ -26,9 +25,9 @@ viii. photo table = 10000
 ix. review table = 10000
 x. tip table = 10000
 xi. user table = 10000
-	
+</pre>
 _2. Find the total distinct records by either the foreign key or primary key for each table. If two foreign keys are listed in the table, please specify which foreign key._
-
+<pre>
 i. Business = 10000
 ii. Hours = 1562 (foreign key -> business_id)
 iii. Category = 2643 (foreign key -> business_id)
@@ -40,20 +39,20 @@ viii. Tip = 3979 (foreign key -> business_id)
 ix. User = 10000
 x. Friend = 11 (foreign key -> user_id)
 xi. Elite_years = 2780 (foreign key -> user_id)
-
+</pre>
 _3. Are there any columns with null values in the Users table? Indicate "yes," or "no."_
 
 Answer: No
 	
 SQL code used to arrive at answer:
-	
+<pre>
 select *
 from user
 where coalesce(id, name, review_count, yelping_since, useful, funny, cool, fans, average_stars,
                 compliment_hot, compliment_more, compliment_profile, compliment_cute, compliment_list,
                 compliment_note, compliment_plain, compliment_cool, compliment_funny, compliment_writer,
                 compliment_photos) is null
-	
+</pre>	
 _4. For each table and column listed below, display the smallest (minimum), largest (maximum), and average (mean) value for the following fields:_
 
 	i. Table: Review, Column: Stars
